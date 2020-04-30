@@ -1,0 +1,12 @@
+
+<h1> Create Task </h1>
+
+<%= form_for(@task) do |f| %>
+  <%= f.label :content, 'Task' %>
+  <%= f.text_field :content %>
+
+
+  <%= f.submit 'Send' %>
+<% end %>
+
+<%= link_to 'ToIndex', tasks_path %>
