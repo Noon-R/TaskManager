@@ -15,6 +15,17 @@ class TasksController < ApplicationController
   end
 
   def create
+  
+    @task = Task.new(task_params)
+    
+    if @task.save
+      flash[:success] = 'Made Task!!'
+      redirect_to @task
+    else
+      flash[:danger] = 'Error Tasks'
+      render :new
+    end   
+
   end
 
   def edit
@@ -26,4 +37,9 @@ class TasksController < ApplicationController
   def destroy
   end  
 
+  private
+
+  def task_params
+    params.require(:task).permit(:content)
+  end
 end
